@@ -30,7 +30,7 @@
 `POST /appointments`: send a JSON as request body with `provider` and `date` like the following
 
     {
-     "provider": String,
+     "provider_id": uuid-v4,
      "date": Timestamp -> ISO-8601
     }
 
@@ -39,17 +39,31 @@
     [
       {
         "id": uuid-v4,
-        "provider": "Provider 1",
-        "date": "2020-06-21T10:00:00.000Z"
+        "provider": uuid-v4,
+        "date": "2020-06-21T10:00:00.000Z",
+        "created_at": "2020-06-21T10:00:00.000Z",
+        "updated_at": "2020-06-21T10:00:00.000Z"
       },
       {
         "id": uuid-v4,
-        "provider": "Provider 2",
-        "date": "2020-06-21T12:00:00.000Z"
+        "provider": uuid-v4,
+        "date": "2020-06-21T12:00:00.000Z",
+        "created_at": "2020-06-21T12:00:00.000Z",
+        "updated_at": "2020-06-21T12:00:00.000Z"
       },
       {
         "id": uuid-v4,
-        "provider": "Provider 3",
-        "date": "2020-06-21T13:00:00.000Z"
+        "provider": uuid-v4,
+        "date": "2020-06-21T13:00:00.000Z",
+        "created_at": "2020-06-21T13:00:00.000Z",
+        "updated_at": "2020-06-21T13:00:00.000Z"
       }
     ]
+
+`POST /users`: create a new user sending a JSON as request body with the fields `name`, `email` and `password` like
+
+    {
+      "name": string,
+      "email": string,
+      "password": string
+    }
