@@ -27,14 +27,14 @@
 
 > Use something like [Insomnia](https://insomnia.rest/download/) to make the requests
 
-`POST /appointments`: send a JSON as request body with `provider` and `date` like the following
+`POST /appointments`: send a JSON as request body with `provider` and `date`. Example:
 
     {
      "provider_id": uuid-v4,
      "date": Timestamp -> ISO-8601
     }
 
-`GET /appointments`: you will receive a list with all appontments like
+`GET /appointments`: you will receive a list with all appontments. Example:
 
     [
       {
@@ -60,10 +60,23 @@
       }
     ]
 
-`POST /users`: create a new user sending a JSON as request body with the fields `name`, `email` and `password` like
+`POST /users`: create a new user sending a JSON as request body with the fields `name`, `email` and `password`. Example:
 
     {
       "name": string,
       "email": string,
       "password": string
+    }
+
+`POST /sessions`: create a new session to an user passing `email` and `password`. This route returns user information and a JSON Web Token. Example:
+
+    {
+      "user": {
+        "id": uuid-v4,
+        "name": string,
+        "email": string,
+        "created_at": "2020-07-02T23:45:50.751Z",
+        "updated_at": "2020-07-02T23:45:50.751Z"
+      },
+      "token": JWT
     }
