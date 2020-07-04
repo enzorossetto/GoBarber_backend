@@ -27,6 +27,29 @@
 
 > Use something like [Insomnia](https://insomnia.rest/download/) to make the requests
 
+`POST /users`: create a new user sending a JSON as request body with the fields `name`, `email` and `password`. Example:
+
+    {
+      "name": string,
+      "email": string,
+      "password": string
+    }
+
+`POST /sessions`: create a new session to an user passing `email` and `password`. This route returns user information and a JSON Web Token. Example:
+
+    {
+      "user": {
+        "id": uuid-v4,
+        "name": string,
+        "email": string,
+        "created_at": "2020-07-02T23:45:50.751Z",
+        "updated_at": "2020-07-02T23:45:50.751Z"
+      },
+      "token": JWT
+    }
+
+> OBS: from now you must use the JWT as an authentication header. On Insomnia you can set it at Auth tab selecting `Bearer Token`
+
 `POST /appointments`: send a JSON as request body with `provider` and `date`. Example:
 
     {
@@ -60,23 +83,3 @@
       }
     ]
 
-`POST /users`: create a new user sending a JSON as request body with the fields `name`, `email` and `password`. Example:
-
-    {
-      "name": string,
-      "email": string,
-      "password": string
-    }
-
-`POST /sessions`: create a new session to an user passing `email` and `password`. This route returns user information and a JSON Web Token. Example:
-
-    {
-      "user": {
-        "id": uuid-v4,
-        "name": string,
-        "email": string,
-        "created_at": "2020-07-02T23:45:50.751Z",
-        "updated_at": "2020-07-02T23:45:50.751Z"
-      },
-      "token": JWT
-    }
