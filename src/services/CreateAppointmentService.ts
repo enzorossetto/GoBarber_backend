@@ -1,6 +1,8 @@
 import { startOfHour } from 'date-fns';
-import { getCustomRepository } from 'typeorm';
+import { getCustomRepository, getRepository } from 'typeorm';
 
+import AppError from '../errors/AppError';
+import User from '../models/User';
 import Appointment from '../models/Appointment';
 import AppointmentsRepository from '../repositrories/AppointmentsRepository';
 
@@ -11,6 +13,14 @@ interface Request {
 
 class CreateAppointmentService {
   public async execute({ date, provider_id }: Request): Promise<Appointment> {
+    const usersRepository = getRepository(User);
+
+    const provider = await usersRepository.findOne(provider_id);
+
+    if (!provider) {
+      throw new AppError('Invalid provider');
+    }
+
     const appointmentsRepository = getCustomRepository(AppointmentsRepository);
 
     const appointmentDate = startOfHour(date);
@@ -20,7 +30,7 @@ class CreateAppointmentService {
     );
 
     if (findAppointmentInSameDate) {
-      throw Error('This time is already booked');
+      throw new AppError('This time is already booked');
     }
 
     const appointment = appointmentsRepository.create({
