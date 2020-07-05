@@ -48,6 +48,8 @@
       "token": JWT
     }
 
+`GET /files/:filename`: you can get an uploaded file passing it's name as `:filename`
+
 > OBS: from now you must use the JWT as an authentication header. On Insomnia you can set it at Auth tab selecting `Bearer Token`
 
 `POST /appointments`: send a JSON as request body with `provider` and `date`. Example:
