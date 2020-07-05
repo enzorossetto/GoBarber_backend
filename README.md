@@ -83,3 +83,13 @@
       }
     ]
 
+`PATCH /users/avatar`: upload an avatar image to an user. When using `Insomnia` select `Multipart Form` as body and select `File` as field type than select your image. This route will return the modified user. Example:
+
+    {
+      "id": uuid-v4,
+      "name": string,
+      "email": string,
+      "avatar": "fbe36361949014c85aec-profile.png",
+      "created_at": "2020-07-02T23:45:50.751Z",
+      "updated_at": "2020-07-05T04:01:40.481Z"
+    }
