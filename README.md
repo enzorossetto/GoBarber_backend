@@ -35,6 +35,10 @@
       "password": string
     }
 
+`POST /password/forgot`: send an email with recover password URL by sending a JSON as request body with `email`.
+
+`POST /password/reset`: change users password by sending as body inside a JSON the new `password` and recover `token` present on above endpoint recover password URL.
+
 `POST /sessions`: create a new session to an user passing `email` and `password`. This route returns user information and a JSON Web Token. Example:
 
     {
@@ -51,6 +55,17 @@
 `GET /files/:filename`: you can get an uploaded file passing it's name as `:filename`
 
 > OBS: from now you must use the JWT as an authentication header. On Insomnia you can set it at Auth tab selecting `Bearer Token`
+
+`PATCH /users/avatar`: upload an avatar image to an user. When using `Insomnia` select `Multipart Form` as body and select `File` as field type than select your image. This route will return the modified user. Example:
+
+    {
+      "id": uuid-v4,
+      "name": string,
+      "email": string,
+      "avatar": "fbe36361949014c85aec-profile.png",
+      "created_at": "2020-07-02T23:45:50.751Z",
+      "updated_at": "2020-07-05T04:01:40.481Z"
+    }
 
 `POST /appointments`: send a JSON as request body with `provider` and `date`. Example:
 
@@ -84,14 +99,3 @@
         "updated_at": "2020-06-21T13:00:00.000Z"
       }
     ]
-
-`PATCH /users/avatar`: upload an avatar image to an user. When using `Insomnia` select `Multipart Form` as body and select `File` as field type than select your image. This route will return the modified user. Example:
-
-    {
-      "id": uuid-v4,
-      "name": string,
-      "email": string,
-      "avatar": "fbe36361949014c85aec-profile.png",
-      "created_at": "2020-07-02T23:45:50.751Z",
-      "updated_at": "2020-07-05T04:01:40.481Z"
-    }
