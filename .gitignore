@@ -1,7 +1,7 @@
 node_modules/
 .vscode/
 build/
-tmp/*
+tmp/uploads/*
 coverage/
 
 !tmp/.gitkeep
