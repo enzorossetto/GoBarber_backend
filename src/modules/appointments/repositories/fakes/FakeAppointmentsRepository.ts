@@ -25,7 +25,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
   }: IFindAllInMonthFromProvider): Promise<Appointment[]> {
     const appointments = this.appointments.filter(
       (appointment) =>
-        appointment.provider.id === provider_id &&
+        appointment.provider_id === provider_id &&
         getMonth(appointment.date) + 1 === month &&
         getYear(appointment.date) === year,
     );
